@@ -19,15 +19,6 @@ public class PetEditService extends BaseJpaRepoEditService<Pet, PetRepository> {
 
     private OwnerReadService ownerReadService;
 
-    public Pet registerPet(RegisterPetForm form){
-
-        var owner = ownerReadService.findByEntityId(form.getOwnerEntityId());
-
-        var pet = new Pet();
-        mapFields(pet, form, owner);
-        return pet;
-    }
-
     public List<Pet> registerPets(RegisterPetsForm form, String updatedByEntityId){
         List<Pet> petList = new ArrayList<>();
         for(var item : form.getRegisterPetFormNoUserList()){

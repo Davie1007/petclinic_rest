@@ -19,12 +19,6 @@ public class PetController {
     private PetEditService petEditService;
 
     @PostMapping("/register")
-    public ResponseEntity<Pet> registerPet(@RequestBody RegisterPetForm form){
-        var pet = petEditService.registerPet(form);
-        return ResponseEntity.status(HttpStatus.CREATED).body(pet);
-    }
-
-    @PostMapping("/register-multiple")
     public ResponseEntity<List<Pet>> registerPets(@RequestBody RegisterPetsForm form){
         var pets = petEditService.registerPets(form, "jj");
         return ResponseEntity.status(HttpStatus.CREATED).body(pets);
