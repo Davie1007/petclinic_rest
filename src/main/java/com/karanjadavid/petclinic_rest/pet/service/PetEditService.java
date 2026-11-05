@@ -1,6 +1,7 @@
 package com.karanjadavid.petclinic_rest.pet.service;
 
 import com.karanjadavid.petclinic_rest.lib.service.BaseJpaRepoEditService;
+import com.karanjadavid.petclinic_rest.owner.service.OwnerReadService;
 import com.karanjadavid.petclinic_rest.pet.entity.Pet;
 import com.karanjadavid.petclinic_rest.pet.form.EditPetForm;
 import com.karanjadavid.petclinic_rest.pet.form.RegisterPetForm;
@@ -14,8 +15,19 @@ import java.util.List;
 @Service
 public class PetEditService extends BaseJpaRepoEditService<Pet, PetRepository> {
 
+    private OwnerReadService ownerReadService;
+
     public Pet registerPet(RegisterPetForm form){
+
+        var owner = ownerReadService.findByEntityId(form.getOwnerEntityId());
+        if(owner == null){
+            //throw an exception
+        }
+
         var pet = new Pet();
+        pet.setName(form.getName());
+        pet.setBirthDate(form.getBirthDate());
+        pet.setType(form.getType());
         return pet;
     }
 
@@ -33,6 +45,10 @@ public class PetEditService extends BaseJpaRepoEditService<Pet, PetRepository> {
     public void deletePet(String entityId, String deletedBy){
         var pet = findByEntityId(entityId);
         delete(pet, deletedBy);
+    }
+
+    public void setOwnerReadService(OwnerReadService service){
+        this.ownerReadService = service;
     }
 
 }
