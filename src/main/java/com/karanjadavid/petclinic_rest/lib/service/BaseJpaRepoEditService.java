@@ -6,7 +6,7 @@ import com.karanjadavid.petclinic_rest.lib.repository.BaseJpaRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class BaseJPaRepoEditService<T extends BaseJpaEntity, R extends BaseJpaRepository<T>> extends BaseJpaRepoReadService<T, R> {
+public class BaseJpaRepoEditService<T extends BaseJpaEntity, R extends BaseJpaRepository<T>> extends BaseJpaRepoReadService<T, R> {
 
     public T save(T model, String updatedByEntityId){
         model.setCreatedAt(LocalDateTime.now());
