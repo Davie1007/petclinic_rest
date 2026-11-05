@@ -1,6 +1,7 @@
 package com.karanjadavid.petclinic_rest.owner.entity;
 
 import com.karanjadavid.petclinic_rest.lib.entity.Person;
+import com.karanjadavid.petclinic_rest.pet.entity.Pet;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
