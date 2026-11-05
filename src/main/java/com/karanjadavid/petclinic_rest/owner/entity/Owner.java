@@ -20,8 +20,4 @@ public class Owner extends Person {
 
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Pet> pets = new ArrayList<>();
-
-
 }

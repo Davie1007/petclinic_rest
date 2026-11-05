@@ -1,14 +1,12 @@
 package com.karanjadavid.petclinic_rest.pet.entity;
 
 import com.karanjadavid.petclinic_rest.lib.entity.BaseJpaEntity;
-import com.karanjadavid.petclinic_rest.visit.entity.Visit;
+import com.karanjadavid.petclinic_rest.owner.entity.Owner;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -21,7 +19,9 @@ public class Pet extends BaseJpaEntity {
 
     private String type;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private final Set<Visit> visits = new LinkedHashSet<>();
+    @OneToOne
+    private Owner owner;
+
+    private String ownerEntityId;
 
 }
