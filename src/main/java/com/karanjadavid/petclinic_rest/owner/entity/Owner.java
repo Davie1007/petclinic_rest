@@ -21,8 +21,6 @@ public class Owner extends Person {
     private String telephone;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "owner_id")
-    @OrderBy("name")
     private List<Pet> pets = new ArrayList<>();
 
 

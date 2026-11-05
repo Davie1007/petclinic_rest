@@ -22,8 +22,6 @@ public class Pet extends BaseJpaEntity {
     private String type;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pet_id")
-    @OrderBy("date ASC")
     private final Set<Visit> visits = new LinkedHashSet<>();
 
 }
